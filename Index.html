@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastRBX | Evento Gradiente Futurista</title>
+    <!-- Carrega o Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Configuração de Fonte e Corpo */
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background-color: #000;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* ------------------------------------- */
+        /* Fundo de Grade Infinita com Gradiente Radial */
+        /* ------------------------------------- */
+        .grid-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            /* Grade mais sutil */
+            background: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                /* Gradiente radial no fundo para efeito de profundidade */
+                radial-gradient(circle at center, rgba(0, 176, 255, 0.05) 0%, rgba(0, 0, 0, 1) 70%);
+            background-size: 50px 50px, 50px 50px, auto;
+            animation: moveGrid 60s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            from { background-position: 0 0, 0 0, 0; }
+            to { background-position: 50px 50px, 50px 50px, 0; }
+        }
+
+        /* ------------------------------------- */
+        /* Estilos Neon (Apenas Brilho de Borda) */
+        /* ------------------------------------- */
+
+        /* Efeito de Brilho Neon (Azul) - Aplicado como sombra */
+        .neon-blue-text {
+            text-shadow: 
+                0 0 4px rgba(0, 176, 255, 0.5), 
+                0 0 8px rgba(0, 176, 255, 0.7);
+            color: #FFFFFF;
+        }
+
+        /* Efeito de Brilho Neon (Amarelo) - Aplicado como sombra */
+        .neon-yellow-text {
+            text-shadow: 
+                0 0 4px rgba(255, 204, 0, 0.6), 
+                0 0 8px rgba(255, 204, 0, 0.9);
+            color: #FFFFFF;
+        }
+        
+        /* Botão com Borda Neon e Brilho Pulsante */
+        .neon-button {
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 10px #00B0FF, 
+                0 0 30px #00B0FF;
+            animation: pulse-glow 1.5s infinite, float 4s ease-in-out infinite;
+            /* Cor base do botão com gradiente sutil */
+            background: linear-gradient(135deg, #00B0FF, #0077D4); 
+            color: #fff !important; /* Texto branco no botão azul */
+        }
+
+        .neon-button:hover {
+            box-shadow: 
+                0 0 15px #FFCC00, 
+                0 0 40px #FFCC00;
+            background: linear-gradient(135deg, #FFCC00, #FFAA00); /* Gradiente de hover amarelo */
+            color: #111827 !important; /* Texto escuro no hover */
+        }
+        
+        /* Animação Pulsante para o Brilho (Mantida) */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px #00B0FF, 0 0 30px #00B0FF; }
+            50% { box-shadow: 0 0 20px #00B0FF, 0 0 50px #00B0FF; }
+        }
+
+        /* Animação de Flutuação (Aplicada ao Container) */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Container Principal com Gradiente e Borda Neon */
+        .event-container {
+            position: relative;
+            z-index: 10;
+            /* Gradiente de Fundo do Painel */
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.95) 0%, rgba(17, 24, 39, 0.98) 100%); 
+            /* Borda Neon */
+            border: 2px solid #00B0FF;
+            box-shadow: 
+                0 0 10px rgba(0, 176, 255, 0.7), /* Brilho interno */
+                0 20px 40px rgba(0, 0, 0, 0.5); /* Sombra profissional */
+            animation: float 5s ease-in-out infinite; /* Flutuação no container */
+        }
+        
+        /* Cartões de Detalhes com Gradiente sutil */
+        .detail-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(17, 24, 39, 0.95));
+            border: 1px solid rgba(0, 176, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .detail-card:hover {
+            border-color: #FFCC00;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'roblox-blue': '#00B0FF',
+                        'roblox-yellow': '#FFCC00',
+                        'dark-bg': '#111827',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-white p-4">
+
+    <!-- Fundo de Grade Infinita com Gradiente Radial -->
+    <div class="grid-background"></div>
+
+    <!-- Container Principal (Centralizado, Estruturado, com Gradiente e Borda Neon Flutuante) -->
+    <main class="w-full max-w-4xl mx-auto py-12 md:py-16 event-container rounded-2xl">
+
+        <!-- Header da Loja - Neon -->
+        <header class="text-center mb-10 p-6">
+            <h1 class="text-7xl md:text-9xl font-display font-extrabold tracking-tight neon-blue-text">
+                FastRBX
+            </h1>
+            <p class="text-xl md:text-2xl text-white mt-4 font-display">
+                &lt; Sua Fonte Rápida e Segura de Robux &gt;
+            </p>
+        </header>
+
+        <!-- Seção de Destaque do Evento -->
+        <section class="p-6 md:p-10 text-center mb-12 border-b-2 border-t-2 border-dashed border-roblox-yellow/50">
+            
+            <h2 class="text-4xl md:text-6xl font-display font-bold mb-6">
+                <span class="neon-yellow-text">PROTOCOLO:</span> <span class="neon-blue-text">MEGA EVENTO { 500 RBX }</span>
+            </h2>
+            
+            <!-- Destaque do Prêmio Centralizado com Borda Neon -->
+            <div class="mb-10 p-4 border-2 border-roblox-blue rounded-lg bg-black/40 inline-block shadow-lg">
+                <p class="text-4xl md:text-6xl font-extrabold text-white font-display neon-yellow-text">
+                    PRÊMIO TOTAL: 500 ROBUX
+                </p>
+            </div>
+
+            <!-- Botão de Chamada para Ação Central, Animado e com Gradiente -->
+            <a href="https://roblox.com.py/users/3767923651/profile" target="_blank" 
+               class="neon-button inline-block text-2xl md:text-3xl font-bold py-4 px-12 rounded-full uppercase tracking-wider transition duration-300 font-display"
+               role="button" aria-label="Junte-se a mim e participe do evento! Clique para entrar no perfil do host.">
+                // ACESSAR PORTAL DO EVENTO //
+            </a>
+            
+        </section>
+
+        <!-- Detalhes do Protocolo (Estruturado) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 md:px-10 text-center">
+            
+            <!-- Cartão 1: Detalhes -->
+            <div class="p-5 rounded-xl detail-card">
+                <p class="text-3xl font-display text-white neon-yellow-text mb-2">MODO</p>
+                <p class="text-lg text-gray-300">Caça ao Tesouro + PvP. Teste suas habilidades de sobrevivência e raciocínio.</p>
+            </div>
+
+            <!-- Cartão 2: Data/Hora -->
+            <div class="p-5 rounded-xl detail-card">
+                <p class="text-3xl font-display text-white neon-yellow-text mb-2">DATA/HORA</p>
+                <p class="text-lg text-gray-300">25.10.2025 | 20:00h BRT. Não se atrase, o portal se fecha!</p>
+            </div>
+
+            <!-- Cartão 3: Recompensa -->
+            <div class="p-5 rounded-xl detail-card">
+                <p class="text-3xl font-display text-white neon-yellow-text mb-2">RECOMPENSA</p>
+                <p class="text-lg text-gray-300">500 Robux via Group Payout (Garantido pela FastRBX).</p>
+            </div>
+
+        </div>
+
+        <!-- Rodapé / Instruções -->
+        <footer class="text-center mt-10 p-6 border-t border-gray-700">
+            <p class="text-lg text-white mb-3 font-semibold">Instruções de Acesso:</p>
+            <p class="text-base text-gray-400 max-w-2xl mx-auto mb-4">
+                Clique no botão acima, siga o perfil do host e procure o servidor FastRBX no Roblox na data e hora marcadas.
+            </p>
+            <p class="text-sm text-roblox-blue neon-blue-text mt-4">
+                FAST.RBX v3.0 | Design Profissional para Vercel
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
+
